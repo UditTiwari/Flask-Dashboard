@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <div style="width:900px;">
+            <canvas id="myChart"></canvas>
+        </div>
+        
+
+  <script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [{% for row in data %}"{{row['Customer_ID']}}",{% endfor %}],
+        datasets: [{
+          label: '# of Age',
+          data: [{% for row in data %}"{{row['Age']}}",{% endfor %}],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+
+
+</html>
+  
